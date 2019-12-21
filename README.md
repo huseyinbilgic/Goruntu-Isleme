@@ -27,7 +27,35 @@ Genellikle, birden çok özelliği tespit etmek için birden fazla filtre kullan
 
 
 ![uygulaması](https://user-images.githubusercontent.com/24252338/71308926-15fb7100-2413-11ea-925f-bb517af79ead.gif) --->
-Concolution İşlemi
+Convolution İşlemi
 
-  İlk filtreyi uyguladığımızda, bir Feature Map oluşturuyor ve bir özellik türünü tespit ediyoruz. Ardından, ikinci bir filtre kullanıp başka bir özellik türünü algılayan ikinci bir Feature Map oluştururuz.
+ İlk filtreyi uyguladığımızda, bir Feature Map oluşturuyor ve bir özellik türünü tespit ediyoruz. Ardından, ikinci bir filtre kullanıp başka bir özellik türünü algılayan ikinci bir Feature Map oluştururuz.
+
+![ornekfiltreler](https://user-images.githubusercontent.com/24252338/71308979-a8037980-2413-11ea-8033-c6b0bb457f0b.png) --->
+Örnek Filtreler
+
+ ### Stride (büyük adım) 
+ 
+ Bu terim genellikle padding terimi ile birlikte kullanılır. Stride, filtrenin giriş görüntüsünün etrafında nasıl evrildiğinini denetler. Yukarıdaki örnekte Stride 1 piksel idi, ancak daha büyük olabilir. Bu, Feature Map’in çıktısının boyutunu etkiler.
+ 
+  Cnn’nin ilk aşamalarında, ilk filtreleri uygularken, diğer Convolutional Katmanlar için mümkün olduğunca çok bilgiyi korumamız gerekir. İşte padding bu nedenden dolayı kullanılır. Feature Map’in orijinal giriş görüntüsünden daha küçük olduğu fark edilebilir. Bu nedenle Padding, (aşağıdaki resimde olduğu gibi)resmin boyutunu korumak için bu haritaya sıfır değerler katacaktır.
+  
+  
+![paddingli](https://user-images.githubusercontent.com/24252338/71309020-2d872980-2414-11ea-9ce2-b740d3ccc424.png) --->
+Padding
+
+### Non-linearity
+  
+Tüm Convolutional katmanlarından sonra genellikle Non-Linearity(doğrusal olmayan) katmanı gellir. Peki görüntüdeki doğrusallık neden bir problemdir? Sorun şu ki, tüm katmanlar doğrusal bir fonksiyon olabildiğinden dolayı Sinir Ağı tek bir perception gibi davranır, yani sonuç, çıktıların linear kombinasyonu olarak hesaplanabilir.
+Bu katman aktivasyon katmanı (Activation Layer) olarak adlandırılır çünkü aktivasyon fonksiyonlarından birini kullanılır. Geçmişte, sigmoid ve tahn gibi doğrusal olmayan fonksiyonlar kullanıldı, ancak Sinir Ağı eğitiminin hızı konusunda en iyi sonucu Rectifier(ReLu) fonksiyonu verdiği için artık bu fonksiyon kullanılmaya başlanmıştır.
+
+#### ReLu Fonksiyonu f (x) = max (0, x)
+
+ReLu fonksiyonunun Feature Map’a uygulandığında aşağıdaki gibi bir sonuç üretilir.
+
+
+![off](https://user-images.githubusercontent.com/24252338/71309063-979fce80-2414-11ea-8618-3e40f2b361ce.png)
+
+Feature Map’taki siyah değerler negatiftir. Relu fonksiyonu uygulandıktan sonra siyah değerler kaldırılır onun yerine 0 konur.
+
 
